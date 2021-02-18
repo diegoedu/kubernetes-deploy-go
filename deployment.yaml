@@ -42,19 +42,16 @@ spec:
 
 
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  #namespace: go
-  name: go-ingress
-  annotations:
-    allow.http: "false"
+  name: ingressroute
 spec:
-  rules:
-  - host: go.rancher.emmiweb.com.br
-    http:
-      paths:
-        - path: /
-          backend:
-            serviceName: go-service
-            servicePort: 80
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`go.rancher.emmiweb.com.br`)
+    kind: Rule
+    services:
+    - name: go-service
+      port: 80
