@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-server
-  #namespace: go
+  namespace: api-middleware
   labels:
     app: goapi
 spec:
