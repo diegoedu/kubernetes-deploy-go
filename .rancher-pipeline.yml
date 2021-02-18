@@ -24,7 +24,7 @@ stages:
       path: ./deployment.yaml
       
 branch:
-  include: [ master]
+  include: [ master ]
   exclude: [ dev, developer ]
 # timeout in minutes
 #timeout: 30
