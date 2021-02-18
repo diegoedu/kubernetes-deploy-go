@@ -1,5 +1,8 @@
 stages:
 - name: Build something
+  when:
+    branch: master
+    event: [ push, pull_request ]
   steps:
   - runScriptConfig:
       image: golang:1.11
