@@ -40,18 +40,3 @@ spec:
       port: 80
       targetPort: 80
 
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: go-ingressroute
-spec:
-  entryPoints:
-    - web
-  routes:
-  - match: Host(`go.rancher.emmiweb.com.br`)
-    kind: Rule
-    services:
-    - name: go-service
-      port: 80
