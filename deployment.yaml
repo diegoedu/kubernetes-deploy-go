@@ -1,27 +1,25 @@
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-server
+  name: example-go-server
   #namespace: api-middleware
   labels:
-    app: goapi
+    app: examplegoapi
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: goapi
+      app: examplegoapi
   template:
     metadata:
       labels:
-        app: goapi
+        app: examplegoapi
     spec:
       imagePullSecrets:
-      - name: pipeline-docker-registry
+      - name: pipeline-example-go-registry
       containers:
-      - name: goapi
-        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+      - name: examplegoapi
+        image: diegoedu11/example-pipeline-go:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 80
 
@@ -29,11 +27,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: go-service
+  name: example-go-service
   #namespace: go
 spec:
   selector:
-    app: goapi
+    app: examplegoapi
   type: ClusterIP
   ports:
     - protocol: TCP
