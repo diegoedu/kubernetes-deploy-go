@@ -17,14 +17,16 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: go-server:${CICD_EXECUTION_SEQUENCE}
+      tag: diegoedu11/example-pipeline-go:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: index.docker.io
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./deployment.yaml
+      path: ./deployment.yml
       
 branch:
   include: [ master ]
   exclude: [ dev, developer ]
 # timeout in minutes
-timeout: 30
+timeout: 20
