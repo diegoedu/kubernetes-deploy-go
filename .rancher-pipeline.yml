@@ -12,7 +12,11 @@ stages:
         cd /go/src/github.com/rancher/pipeline-example-go
         go build -o bin/hello-server
         go test -cover
+        
 - name: Publish
+  when:
+    branch: master
+    event: tag
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
@@ -20,7 +24,11 @@ stages:
       tag: diegoedu11/example-pipeline-go:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: index.docker.io
+
 - name: Deploy
+  when:
+    branch: master
+    event: tag
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
