@@ -30,7 +30,8 @@ stages:
     event: tag
   steps:
   - applyYamlConfig:
-      
+  
+triggerWebhookTag: true
 branch:
   include: [ master ]
   exclude: [ dev, developer ]
