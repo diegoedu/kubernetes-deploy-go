@@ -12,7 +12,6 @@ stages:
         cd /go/src/github.com/rancher/pipeline-example-go
         go build -o bin/hello-server
         go test -cover
-        
 - name: Publish
   when:
     branch: master
@@ -31,7 +30,6 @@ stages:
     event: tag
   steps:
   - applyYamlConfig:
-      path: ./deployment.yaml
       
 branch:
   include: [ master ]
