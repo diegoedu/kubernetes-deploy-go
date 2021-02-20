@@ -36,4 +36,4 @@ branch:
   include: [ master ]
   exclude: [ dev, developer ]
 # timeout in minutes
-timeout: 10
+timeout: 30
